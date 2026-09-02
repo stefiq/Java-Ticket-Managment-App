@@ -47,4 +47,25 @@ public class TicketController {
     public void updateTicket(@PathVariable Long id, @RequestBody Ticket updatedTicket) {
         ticketService.updateTicket(id, updatedTicket);
     }
+
+    @PatchMapping("/tickets/{id}/status")
+    public void changeTicketStatus(@PathVariable Long id,@RequestBody String newStatus){
+        ticketService.changeTicketStatus(id,newStatus);
+    }
+
+    @PatchMapping("tickets/{id}/close")
+    public void closeTicket(@PathVariable Long id){
+        ticketService.closeTicket(id);
+    }
+
+    @PatchMapping("/tickets/{id}/open")
+    public void openTicket(@PathVariable  Long id){
+        ticketService.openTicket(id);
+    }
+
+    @GetMapping("/tickets/count/{status}")
+    public int countTicketByStatus(@PathVariable String status){
+        return ticketService.countTicketsByStatus(status);
+    }
+
 }

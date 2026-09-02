@@ -39,6 +39,43 @@ public class TicketService {
             ticket.setTitle(updatedTicket.getTitle());
             ticket.setDescription(updatedTicket.getDescription());
             ticket.setStatus(updatedTicket.getStatus());
+            ticket.setPriority(updatedTicket.getPriority());
+            ticket.setCategory(updatedTicket.getCategory());
         }
+    }
+
+    public void changeTicketStatus(Long id, String newStatus){
+        Ticket t = getTicketById(id);
+
+        if(t != null){
+            t.setStatus(newStatus);
+        }
+    }
+
+    public void closeTicket(Long id){
+        Ticket t = getTicketById(id);
+
+        if(t != null){
+            t.setStatus("CLOSED");
+        }
+    }
+
+    public void openTicket(Long id){
+        Ticket t = getTicketById(id);
+
+        if(t != null){
+            t.setStatus("OPEN");
+        }
+    }
+
+    public int countTicketsByStatus(String status){
+        int count = 0;
+        for (Ticket t : tickets){
+            if (t.getStatus().equalsIgnoreCase(status)){
+                count++;
+            }
+        }
+
+        return count;
     }
 }

@@ -13,4 +13,6 @@ public class Ticket {
     private String title;
     private String description;
     private String status;
+    private String priority;
+    private String category;
 }
