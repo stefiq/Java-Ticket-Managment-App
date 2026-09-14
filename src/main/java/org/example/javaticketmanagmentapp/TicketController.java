@@ -1,5 +1,6 @@
 package org.example.javaticketmanagmentapp;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class TicketController {
 
     // 2
     @PostMapping("/tickets")
-    public void createTicket(@RequestBody Ticket ticket) {
+    public void createTicket(@Valid @RequestBody Ticket ticket) {
         ticketService.createTicket(ticket);
     }
 
@@ -44,12 +45,12 @@ public class TicketController {
 
     //5
     @PutMapping("/tickets/{id}")
-    public void updateTicket(@PathVariable Long id, @RequestBody Ticket updatedTicket) {
+    public void updateTicket(@PathVariable Long id,@Valid @RequestBody Ticket updatedTicket) {
         ticketService.updateTicket(id, updatedTicket);
     }
 
     @PatchMapping("/tickets/{id}/status")
-    public void changeTicketStatus(@PathVariable Long id,@RequestBody String newStatus){
+    public void changeTicketStatus(@PathVariable Long id, @RequestBody String newStatus){
         ticketService.changeTicketStatus(id,newStatus);
     }
 
