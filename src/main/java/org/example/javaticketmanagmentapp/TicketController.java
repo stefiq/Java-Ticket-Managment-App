@@ -53,7 +53,7 @@ public class TicketController {
         ticketService.changeTicketStatus(id,newStatus);
     }
 
-    @PatchMapping("tickets/{id}/close")
+    @PatchMapping("/tickets/{id}/close")
     public void closeTicket(@PathVariable Long id){
         ticketService.closeTicket(id);
     }
